@@ -1,0 +1,54 @@
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+<div class="row">
+  <div class="col-12">
+    <h2>Schule Produktionen</h2>
+  </div>
+  {% for product in products %} {% if product.category == "School Product" %}
+  <div class="col-lg-4">
+    <img class="thumbnail" src="{{ product.imageURL }}" />
+    <div class="box-element product">
+      <h6><strong>{{ product.name }}</strong></h6>
+      <hr />
+      <button
+        data-product="{{ product.id }}"
+        data-action="add"
+        class="btn btn-outline-secondary add-btn update-cart"
+      >
+        Zum Warenkorb hinzufügen
+      </button>
+
+      <h4 style="display: inline-block; float: right">
+        €{{ product.price|floatformat:2 }}
+      </h4>
+      <!-- Category: School Product -->
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+</div>
+<hr style="border-top: 2px solid blue" />
+<div class="row">
+  <div class="col-12">
+    <h2>Online-Produktionen</h2>
+  </div>
+  {% for product in products %} {% if product.category == "Online Product" %}
+  <div class="col-lg-4">
+    <img class="thumbnail" src="{{ product.imageURL }}" />
+    <div class="box-element product">
+      <h6><strong>{{ product.name }}</strong></h6>
+      <hr />
+      <button
+        data-product="{{ product.id }}"
+        data-action="add"
+        class="btn btn-outline-secondary add-btn update-cart"
+      >
+        Zum Warenkorb hinzufügen
+      </button>
+      <h4 style="display: inline-block; float: right">
+        €{{ product.price|floatformat:2 }}
+      </h4>
+      <!-- Category: Online Product -->
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+</div>
+{% endblock content %}
